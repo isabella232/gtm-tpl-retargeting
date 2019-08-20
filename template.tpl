@@ -178,7 +178,7 @@ const log = require('logToConsole'),
     injectScript = require('injectScript'),
     callInWindow = require('callInWindow');
 
-log('LQM retargeting pixel v1.07');
+log('LQM retargeting pixel v1.08');
 let msg = 'data: ';
 for (let i in data) msg += '\n' + i + ': ' + data[i];
 log(msg);
@@ -208,8 +208,8 @@ if (data.consentType === 'none') {
 }
 
 function execute(gdpr, consent) {
-    const url = 'https://tracking.lqm.io/odin/handle_sync.js?seg=' + data.segmentToken +
-        '&gdpr=' + gdpr + '&gdpr_consent=' + encodeUriComponent(consent) + '&cb=' + getTimestamp();
+    const url = 'https://tracking.lqm.io/odin/handle_sync.js?seg=' + encodeUriComponent(data.segmentToken) +
+        '&gdpr=' + encodeUriComponent(gdpr) + '&gdpr_consent=' + encodeUriComponent(consent) + '&cb=' + getTimestamp();
     log('url: ' + url);
     if (!data.segmentToken) {
         log('empty segment token');
