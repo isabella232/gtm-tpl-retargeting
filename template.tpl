@@ -173,7 +173,10 @@ ___SANDBOXED_JS_FOR_WEB_TEMPLATE___
 const log = require('logToConsole'),
     query = require('queryPermission'),
     random = require('generateRandom'),
-    encodeUriComponent = require('encodeUriComponent'),
+    _encodeUriComponent = require('encodeUriComponent'),
+    encodeUriComponent = function(val) {
+        return _encodeUriComponent(val.toString());
+    },
     getTimestamp = require('getTimestamp'),
     injectScript = require('injectScript'),
     callInWindow = require('callInWindow');
